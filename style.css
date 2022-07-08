@@ -1,0 +1,320 @@
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0; 
+}
+
+/* set up the body */
+body {
+    background: linear-gradient(150.03deg, #FFFFFF 0%, #FFF4F4 84.51%);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    overflow-x: hidden;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+/* make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+/* general */
+
+.flex {
+    display: flex;
+    gap: var(--gap, 1rem);
+}
+
+.grid {
+    display: grid;
+}
+
+.sr-only {
+  position: absolute; 
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px; 
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+/* ------------------- */
+/* Layout              */
+/* ------------------- */
+
+.main {
+    grid-template-areas: 
+    'logo'
+    'hero'
+    'heading'
+    'description'
+    'form'
+    'attibution';
+}
+
+#logo {
+    grid-area: logo;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+#image-hero {
+    grid-area: hero;
+}
+
+#image-hero > img {
+    width: 100%;
+    filter: saturate(110%);
+    margin-top: 2rem;
+}
+
+#heading {
+    grid-area: heading;
+    color: hsla(0, 7%, 24%, 1);
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 42px;
+    text-align: center;
+    letter-spacing: 10.8254px;
+    text-transform: uppercase;
+    padding-inline: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+#heading > span {
+    color: hsla(0, 36%, 70%, 1);
+    font-weight: 300;
+}
+
+#description {
+    grid-area: description;
+    color: hsla(0, 36%, 70%, 1);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    max-width: 311px;
+    justify-self: center;
+    margin-bottom: 2rem;
+}
+
+#form {
+    position: relative;
+    grid-area: form;
+    max-width: 311px;
+    justify-self: center;
+}
+
+#email {
+    background: transparent;
+    width: 311px;
+    height: 48px;
+    border: 1px solid #CE9898;
+    border-radius: 28px;
+    text-indent: 1.5rem;
+}
+
+#email::placeholder {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 28px;
+    color: #CE9898;
+    opacity: .5;
+    text-indent: 1.5rem;
+}
+
+
+#submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 64px;
+    height: 48px;
+    background: linear-gradient(135deg, #F8BFBF 0%, #EE8B8B 100%);
+    border: none;
+    box-shadow: 0px 15px 20px rgba(198, 110, 110, 0.247569);
+    border-radius: 28px;
+    cursor: pointer;
+    padding: 0;
+}
+
+#submit:hover{
+    filter: opacity(.6);
+}
+
+#submit > #icon-arrow {
+    padding-left: 1.75rem;
+}
+
+#submit > #icon-error {
+   position: absolute;
+   top: 13px;
+   right: 4.5rem;
+   display: none;
+}
+
+#err {
+    color: red;
+    margin-top: 1rem;
+    margin-left: 2rem;
+}
+
+.attribution { 
+    font-size: 11px;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: 1030px) {
+    .attribution {
+        text-align: initial;
+    }
+
+    .main {
+        background-image: url(./images/bg-pattern-desktop.svg);
+        background-repeat: no-repeat;
+        background-position: bottom left;
+        grid-template-areas: 
+        'logo hero'
+        'heading hero'
+        'description hero'
+        'form hero'
+        'attribution hero';
+        justify-content: space-between;
+        padding-left: 10.3125rem;
+        height: 100vh;
+    }
+
+    #logo {
+        margin-top: 4.6875rem;
+    }
+
+    #image-hero {
+        align-self: center;
+    }
+
+    #heading {
+        max-width: 27.8125rem;
+        text-align: left;
+        padding-inline: 0;
+        font-size: 64px;
+        line-height: 71px;
+        letter-spacing: 17.3206px;
+    }
+
+    #heading > span {
+        line-height: 64px;
+    }
+
+    #description {
+        max-width: 27.8125rem;
+        margin-right: 2rem;
+        text-align: left;
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    #form {
+        max-width: 27.8125rem;
+        justify-self: start;
+        width: 445px;
+        height: 56px;
+    }
+
+    #email {
+        width: 445px;
+        height: 56px;
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    #email::placeholder {
+        font-size: 16px;
+        text-indent: 1.5rem;
+    }
+
+    #submit {
+        width: 100px;
+        height: 56px;
+    }
+
+    #submit > #icon-arrow {
+        padding-left: 3rem;
+    }
+    
+    #submit > #icon-error {
+       top: 17px;
+       right: 6.8rem;
+    }
+}
+
+@media (min-width:1250px) {
+    #image-hero > img{
+        height: 100vh;
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 1440px) {
+    .main {
+        background-size: cover;
+    }
+}
+
+
+
